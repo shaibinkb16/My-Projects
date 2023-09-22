@@ -1,0 +1,58 @@
+body{
+    margin:0;
+    background-color:rgb(224, 10, 206);
+    display: flex;
+    min-height:100vh ;
+    justify-content:center ;
+    align-items: center;
+}
+
+.container{
+    background-color: rgba(255,255,255,.3);
+    box-shadow: 0 5px 10px rgba(0,0,0,.3);
+    padding: 20px;
+    width: 85%;
+    max-width: 400px;
+    height: auto;
+    font-size: 20px;
+    font-weight: 800;
+    text-align: center;
+    border-radius: 20px;
+}
+.ratings-container{
+    display: flex;
+    padding: 20px 0;
+    justify-content: center;
+}
+.rateing{
+    cursor: pointer;
+    padding:30px;
+    transition:  .3s ease;
+}
+.rateing:hover{
+    font-weight: 700;
+    transform: scale(1.1); 
+}
+.rateing.active{
+    border-radius: 100%;
+    transform: scale(1.5);
+}
+
+.rateing img{
+    width:60px;
+
+}
+.btn{
+    border: none;
+    padding: 15px;
+    border-radius: 30px;
+    background-color: rgba(255, 255, 255, 0.2);
+    box-shadow: 0 5px 10px rgba(0,0,0,.3);
+    font-size: 15px;
+    transition:  .3s ease;
+}
+.btn:hover{
+    font-weight: 700;
+    transform: scale(1.1);
+    cursor: pointer;
+}
