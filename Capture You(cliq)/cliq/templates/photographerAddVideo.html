@@ -1,0 +1,22 @@
+{%  extends 'photographer_header.html' %}
+{% block owner_home %}
+<html>
+   
+    <head><h2 align="center" style="color: brown;"> Add Your Videos</h2></head>
+    <body>
+    <form method="POST" enctype="multipart/form-data">
+     {% csrf_token %}
+        <table align="center" width="500" height="150">
+            
+<tr><td> Video:</td><td><input type="file" name="f1" class="textbox"></td></tr>
+ <tr><td>Description</td><td><input type="text" name="link" class="textbox"></td></tr>
+<tr><td><input type="submit" name="sub" value="Submit"></td></tr>
+</table>
+</form>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+{% endblock %}

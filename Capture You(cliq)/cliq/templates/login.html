@@ -1,0 +1,100 @@
+{% load static %}
+
+
+<!DOCTYPE html>
+<html lang="en">
+
+
+<!-- Mirrored from brandio.io/envato/iofrm/html/login3.html by HTTrack Website Copier/3.x [XR&CO'2014], Fri, 20 Dec 2019 07:12:19 GMT -->
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pet Vet</title>
+    <link rel="stylesheet" type="text/css" href="{% static 'login/log_css/bootstrap.min.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'login/log_css/fontawesome-all.min.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'login/log_css/iofrm-style.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'login/log_css/iofrm-theme3.css' %}">
+</head>
+{% if msg %}
+<script>
+alert("{{msg}}");
+window.location.href="../login/"
+</script>
+{% endif %}
+<body>
+    <div class="form-body">
+        <div class="website-logo">
+            <a href="#">
+                <div class="logo">
+                    <img class="logo-size" src="{% static 'login/log_images/logo-light.svg" alt="">
+                </div>
+            </a>
+        </div>
+        <div class="row">
+            <div class="img-holder">
+                <div class="bg"></div>
+                <div class="info-holder">
+
+                </div>
+            </div>
+            <div class="form-holder">
+                <div class="form-content">
+                    <div class="form-items">
+                        <h3>SIGN IN HERE</h3>
+                        <p>Access to the Photographers World.</p>
+                        <!-- <div class="page-links">
+                            <a href="#" class="active">Login</a> -->
+                            <!-- <a href="../owner_register/">Register</a> -->
+                        <!-- </div> -->
+                        <!-- <div class="alert alert-warning alert-dismissible fade show with-icon" role="alert">
+                            Please fill the following form with your information
+                            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                              <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div> -->
+                        {% if msg %}
+                       <label style="color: red;"><b>{{msg}}</b></label>
+                        {% endif %}
+                        <form method="POST">
+                            {% csrf_token %}
+                            <input class="form-control" type="text" name="uname" placeholder="E-mail Address" required>
+                            <input class="form-control" type="password" name="pswd" placeholder="Password" id="myInput" required>
+
+                            <input class="form-control" type="checkbox"  onclick="myFunction()">
+                                    <label onclick="myFunction()">show password</label>
+                            <div class="form-button" style="margin-left: 38%;">
+                                <button id="submit" type="submit" name="submit" class="ibtn">Login</button> 
+                                <!-- <a href="#">Forget password?</a> -->
+                            </div>
+                        </form>
+                       
+                            <!-- script for show password -->
+                            <script>
+                                function myFunction() {
+                                    debugger;
+                                    var x = document.getElementById("myInput");
+                                    if (x.type === "password") {
+                                        x.type = "text";
+                                    } else {
+                                        x.type = "password";
+                                    }
+                                }
+                            </script>
+                            <!-- //script for show password -->
+                        <div class="other-links" style="width: 50;">
+                         <a href="/"> <h6>Not Registered Yet ? &nbsp;&nbsp;&nbsp;&nbsp;<b>REGISTER</b></h6></a>
+                         <a href="/"> <h6>Home</h6></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+<script src="{% static 'login/log_js/jquery.min.js' %}"></script>
+<script src="{% static 'login/log_js/popper.min.js' %}"></script>
+<script src="{% static 'login/log_js/bootstrap.min.js' %}"></script>
+<script src="{% static 'login/log_js/main.js' %}"></script>
+</body>
+
+<!-- Mirrored from brandio.io/envato/iofrm/html/login3.html by HTTrack Website Copier/3.x [XR&CO'2014], Fri, 20 Dec 2019 07:12:21 GMT -->
+</html>

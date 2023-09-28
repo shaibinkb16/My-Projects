@@ -1,0 +1,46 @@
+{%  extends 'registration_header_footer.html' %}
+{% block owner_home %}
+{% if msg %}
+<script>
+    alert('{{msg}}');
+</script>
+{% endif %}
+<html>
+    <br>
+    <br>
+    <head><h2 align="center" style="color: brown;">  Photographer Registration</h2></head>
+    <body>
+    <form method="POST" enctype="multipart/form-data">
+     {% csrf_token %}
+        <table align="center" width="500" height="300">
+            <br>
+            <br>
+<tr><td> Name:</td><td><input type="text" name="name" class="form-control"  title="enter characters only"></td></tr>
+<tr><td> Address:</td><td><input type="text" name="addr" class="form-control" required></td></tr>
+<tr><td> Gender:</td>       
+    <td><input type="radio" name="rad" value="male">Male
+    <input type="radio" name="rad" value="female">Female</td>
+</tr>
+<tr><td> District:</td><td><select name="dis" class="form-control">
+    <option>--Select District--</option>
+     {% for d in data %}
+                <option value="{{d.1}}" style="color:black" class="form-control">{{d.1}}</option>
+                {% endfor %}
+</select></td></tr>
+<tr><td> place:</td><td><input type="text" name="pl" class="form-control" required pattern="[A-Za-z\s]+" title="enter characters only"></td></tr>
+<tr><td> Specialization:</td><td><input type="text" name="sp" class="form-control"  title="enter characters only"></td></tr>
+
+<tr><td> Email:</td><td><input type="email" name="email" class="form-control" required></td></tr>
+<tr><td> Phone Number:</td><td><input type="text" name="phno" class="form-control" required minlength="10" maxlength="10" pattern="[0-9]{10}" title="enter 10 digits only"></td></tr>
+<tr><td>Image</td><td><input type="file" name="f1" class="form-control" required></td></tr>
+
+<tr><td> Username:</td><td><input type="text" name="uname" class="form-control" required></td></tr>
+<tr><td> Password:</td><td><input type="Password" name="pass" class="form-control" required></td></tr>
+<tr><td><input type="submit" name="sub" value="Submit"></td></tr>
+</table>
+{{msg}}
+</form>
+<br>
+<br>
+{% endblock %}
+

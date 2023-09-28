@@ -1,0 +1,513 @@
+{% extends 'customer_header.html' %}
+{% block viewphotographer %}
+<html>
+
+<body>
+	<form method="POST">
+		{% csrf_token %}
+
+		<style>
+			fieldset,
+			label {
+				margin: 0;
+				padding: 0;
+			}
+
+			h1 {
+				font-size: 1.5em;
+				margin: 10px;
+			}
+
+			/****** Style Star Rating Widget *****/
+
+			.rating {
+				border: none;
+				float: left;
+			}
+
+			.rating>input {
+				display: none;
+			}
+
+			.rating>label:before {
+				margin: 5px;
+				font-size: 1.25em;
+				font-family: FontAwesome;
+				display: inline-block;
+				content: "\f005";
+			}
+
+			.rating>.half:before {
+				content: "\f089";
+				position: absolute;
+			}
+
+			.rating>label {
+				color: #ddd;
+				float: right;
+			}
+
+			/***** CSS Magic to Highlight Stars on Hover *****/
+
+			.rating>input:checked~label,
+			/* show gold star when clicked */
+			.rating:not(:checked)>label:hover,
+			/* hover current star */
+			.rating:not(:checked)>label:hover~label {
+				color: #FFD700;
+			}
+
+			/* hover previous stars in list */
+
+			.rating>input:checked+label:hover,
+			/* hover current star when changing rating */
+			.rating>input:checked~label:hover,
+			.rating>label:hover~input:checked~label,
+			/* lighten current selection */
+			.rating>input:checked~label:hover~label {
+				color: #FFED85;
+			}
+
+			table {
+				font-family: arial, sans-serif;
+				border-collapse: collapse;
+				width: 95%;
+				margin-left: 3%;
+				border: #000000;
+			}
+
+			td,
+			th {
+				border: 1px solid #dddddd;
+				text-align: left;
+				padding: 8px;
+			}
+
+			tr:nth-child(even) {
+				background-color: #dddddd;
+			}
+		</style>
+
+
+
+
+		<div id="class" class="">
+			<div class="content-wrap">
+				<div class="container">
+
+					<div class="row">
+						<div class="col-sm-12 col-md-12">
+							<h2 class="section-heading text-left text-primary no-after mb-1">
+								{% for d in data %}
+								<center><img src="../static{{d.9}}" class="img-responsive text-center" width="400px" height="270px"></center>
+
+							</h2>
+							<!--<h2 class="subheading text-center">{{d.1}}</h2>-->
+						</div>
+					</div>
+
+					<div>
+						<!-- Item 1 -->
+						<div class="col-12 col-sm-11 col-md-11">
+							<div class="rs-team mb">
+
+								<div class="media">
+									<!-- <a href="../owner_view_walkers?reg_id={{d.0}}"><img src="../../{{d.1}}" alt="{{d.1}}" class="img-fluid" width="200px" height="200px"></a> -->
+
+								</div>
+								<div align="center">
+									<div class="text-primary">
+										<h2 style="color: black;"><b>{{d.1}}</b></h2>
+									</div>
+
+									<div class="text-primary"><b>Address:{{d.2}}</div><br></b>
+									<div class="text-primary"><b>Contact Number : {{d.8}} </b></div><br>
+									<div class="text-primary"><b>Email : {{d.7}} </b></div><br>
+									<div class="text-primary"><b>{{d.5}} </b></div><br>
+									<div class="text-primary"><b>Timing :</b> <b style="color: black;">From 9 am-10
+											pm</b></div><br>
+									<a href="../customerviewpackage?reg_id={{d.0}}" class="btn btn-primary"
+										value="View Packages">View Packages</a><br><br>
+								</div>
+							</div>
+
+						</div>
+					</div>
+					{% endfor %}
+
+
+
+					<!--photographer image content-->
+
+
+
+
+					<!-- Item 2 -->
+					<!-- <div class="col-12 col-sm-6 col-md-4">
+						<div class="rs-team-1 mb-5">
+							<div class="media">
+								<a href="page-single-staff.html"><img src="images/vet06.jpg" alt="" class="img-fluid"></a>
+								<div class="sosmed-icon">
+									<a href="#"><i class="fa fa-facebook"></i></a>
+									<a href="#"><i class="fa fa-twitter"></i></a>
+									<a href="#"><i class="fa fa-google-plus"></i></a>
+								</div>
+							</div>
+							<div class="body">
+								<div class="title"><a href="page-single-staff.html">Dr. Mellisa Doel</a></div>
+								<div class="text-primary">Veterinary</div>
+							</div>
+						</div>
+					</div> -->
+
+					<!-- Item 3 -->
+					<!-- <div class="col-12 col-sm-6 col-md-4">
+						<div class="rs-team-1 mb-5">
+							<div class="media">
+								<a href="page-single-staff.html"><img src="images/vet07.jpg" alt="" class="img-fluid"></a>
+								<div class="sosmed-icon">
+									<a href="#"><i class="fa fa-facebook"></i></a>
+									<a href="#"><i class="fa fa-twitter"></i></a>
+									<a href="#"><i class="fa fa-google-plus"></i></a>
+								</div>
+							</div>
+							<div class="body">
+								<div class="title"><a href="page-single-staff.html">Dr. Aldizza Doel</a></div>
+								<div class="text-primary">Veterinary</div>
+							</div>
+						</div>
+					</div> -->
+
+					<!-- Item 4 -->
+					<!-- <div class="col-12 col-sm-6 col-md-4">
+						<div class="rs-team-1 mb-5">
+							<div class="media">
+								<a href="page-single-staff.html"><img src="images/vet08.jpg" alt="" class="img-fluid"></a>
+								<div class="sosmed-icon">
+									<a href="#"><i class="fa fa-facebook"></i></a>
+									<a href="#"><i class="fa fa-twitter"></i></a>
+									<a href="#"><i class="fa fa-google-plus"></i></a>
+								</div>
+							</div>
+							<div class="body">
+								<div class="title"><a href="page-single-staff.html">Dr. Ronald Doel</a></div>
+								<div class="text-primary">Veterinary</div>
+							</div>
+						</div>
+					</div> -->
+
+					<!-- Item 5 -->
+					<!-- <div class="col-12 col-sm-6 col-md-4">
+						<div class="rs-team-1 mb-5">
+							<div class="media">
+								<a href="page-single-staff.html"><img src="images/vet09.jpg" alt="" class="img-fluid"></a>
+								<div class="sosmed-icon">
+									<a href="#"><i class="fa fa-facebook"></i></a>
+									<a href="#"><i class="fa fa-twitter"></i></a>
+									<a href="#"><i class="fa fa-google-plus"></i></a>
+								</div>
+							</div>
+							<div class="body">
+								<div class="title"><a href="page-single-staff.html">Dr. James Doel</</a></div>
+								<div class="text-primary">Veterinary</div>
+							</div>
+						</div>
+					</div> -->
+
+					<!-- Item 6 -->
+					<!-- <div class="col-12 col-sm-6 col-md-4">
+						<div class="rs-team-1 mb-5">
+							<div class="media">
+								<a href="page-single-staff.html"><img src="images/vet10.jpg" alt="" class="img-fluid"></a>
+								<div class="sosmed-icon">
+									<a href="#"><i class="fa fa-facebook"></i></a>
+									<a href="#"><i class="fa fa-twitter"></i></a>
+									<a href="#"><i class="fa fa-google-plus"></i></a>
+								</div>
+							</div>
+							<div class="body">
+								<div class="title"><a href="page-single-staff.html">Dr. Thomas Doel</a></div>
+								<div class="text-primary">Veterinary</div>
+							</div>
+						</div>
+					</div> -->
+					<br>
+					<br>
+					<br>
+
+					<h2 class="w3l_header" style="color:black" align="center"><b>Feedbacks</b></h2>
+					<br>
+
+					<div class="row mt-4">
+
+
+
+
+						{% for d in feeddata %}
+						<!-- Item 1 -->
+						<div class="col-12 col-sm-6 col-md-4">
+							<div class="rs-team-1 mb-5">
+
+								<div class="media">
+									<!-- <a href="../owner_view_walkers?reg_id={{d.0}}"><img src="../../{{d.1}}" alt="{{d.1}}" class="img-fluid" width="200px" height="200px"></a> -->
+									<div class="sosmed-icon">
+										<a href="#"><i class="fa fa-facebook"></i></a>
+										<a href="#"><i class="fa fa-twitter"></i></a>
+										<a href="#"><i class="fa fa-google-plus"></i></a>
+									</div>
+								</div>
+								<div class="body">
+									<div class="text-primary"><b>Customer:{{d.2}}</div><br></b>
+									<div class="text-primary"><b>Feedback:{{d.0}}</div><br></b>
+									<div class="text-primary"><b>Rating:{{d.1}}
+											<ul class="testi-w3ls-rate mt-4" style="margin-left: 40%;">
+												{% if d.1 == '5' %}
+
+												<fieldset class="rating">
+													<label class="full" for="star5" title="Awesome - 5 stars"
+														style="color: #FFD700;"></label>
+													<label class="full" for="star4" title="Pretty good - 4 stars"
+														style="color: #FFD700;"></label>
+													<label class="full" for="star3" title="Meh - 3 stars"
+														style="color: #FFD700;"></label>
+													<label class="full" for="star2" title="Kinda bad - 2 stars"
+														style="color: #FFD700;"></label>
+													<label class="full" for="star1" title="Sucks big time - 1 star"
+														style="color: #FFD700;"></label>
+
+												</fieldset>
+
+												{% endif %}
+												{% if d.1 == '4' %}
+
+												<fieldset class="rating">
+													<label class="full" for="star4" title="Pretty good - 4 stars"
+														style="color: #FFD700;"></label>
+													<label class="full" for="star3" title="Meh - 3 stars"
+														style="color: #FFD700;"></label>
+													<label class="full" for="star2" title="Kinda bad - 2 stars"
+														style="color: #FFD700;"></label>
+													<label class="full" for="star1" title="Sucks big time - 1 star"
+														style="color: #FFD700;"></label>
+
+												</fieldset>
+
+												{% endif %}
+												{% if d.1 == '3' %}
+
+												<fieldset class="rating">
+													<label class="full" for="star4"
+														title="Pretty good - 4 stars"></label>
+													<label class="full" for="star4"
+														title="Pretty good - 4 stars"></label>
+
+													<!-- <label class="half" for="star4half" title="Pretty good - 4.5 stars" style="color: #FFD700;"></label> -->
+													<!-- <label class = "full" for="star4" title="Pretty good - 4 stars" style="color: #FFD700;"></label> -->
+													<label class="full" for="star3" title="Meh - 3 stars"
+														style="color: #FFD700;"></label>
+													<label class="full" for="star2" title="Kinda bad - 2 stars"
+														style="color: #FFD700;"></label>
+													<label class="full" for="star1" title="Sucks big time - 1 star"
+														style="color: #FFD700;"></label>
+
+												</fieldset>
+
+												{% endif %}
+												{% if d.1 == '2' %}
+
+												<fieldset class="rating">
+													<label class="full" for="star4"
+														title="Pretty good - 4 stars"></label>
+													<label class="full" for="star4"
+														title="Pretty good - 4 stars"></label>
+													<label class="full" for="star3" title="Meh - 3 stars"></label>
+													<label class="full" for="star2" title="Kinda bad - 2 stars"
+														style="color: #FFD700;"></label>
+													<label class="full" for="star1" title="Sucks big time - 1 star"
+														style="color: #FFD700;"></label>
+
+												</fieldset>
+
+												{% endif %}
+												{% if d.1 == '1' %}
+
+												<fieldset class="rating">
+													<label class="full" for="star2" title="Kinda bad - 2 stars"
+														style="color: #FFD700;"></label> -->
+													<label class="full" for="star4"
+														title="Pretty good - 4 stars"></label>
+													<label class="full" for="star4"
+														title="Pretty good - 4 stars"></label>
+													<label class="full" for="star4"
+														title="Pretty good - 4 stars"></label>
+													<label class="full" for="star4"
+														title="Pretty good - 4 stars"></label>
+
+													<label class="full" for="star1" title="Sucks big time - 1 star"
+														style="color: #FFD700;"></label>
+
+												</fieldset>
+
+												{% endif %}
+										</b></div><br>
+
+									<br>
+
+
+
+
+
+								</div>
+							</div>
+						</div>
+						{% endfor %}
+
+
+					</div>
+				</div>
+			</div>
+			<h2 class="w3l_header" style="color:black" align="center"><b> Camera Specifications </b></h2>
+			<br>
+			<div class="row mt-4">
+
+
+
+
+				{% for d in specdata %}
+				<!-- Item 1 -->
+				<div class="col-12 col-sm-6 col-md-4">
+					<div class="rs-team-1 mb-5">
+
+						<div class="media">
+							
+							<!-- <a href="../owner_view_walkers?reg_id={{d.0}}"><img src="../../{{d.1}}" alt="{{d.1}}" class="img-fluid" width="200px" height="200px"></a> -->
+							<div class="sosmed-icon">
+								
+								<a href="#"><i class="fa fa-facebook"></i></a>
+								<a href="#"><i class="fa fa-twitter"></i></a>
+								<a href="#"><i class="fa fa-google-plus"></i></a>
+							</div>
+						</div>
+						
+						<div class="body">
+							<div class="text-primary"><b>Camera:{{d.1}}</div><br></b>
+							<div class="text-primary"><b>Cmodel:{{d.2}}</div><br></b>
+							<div class="text-primary"><b>Description:{{d.3}} </b></div><br>
+							<img src='../static{{d.4}}' alt='Cinque Terre' class="img-responsive" width="120px"
+								height="80px">
+
+							<br>
+
+
+
+
+
+						</div>
+					</div>
+				</div>
+				{% endfor %}
+
+
+			</div>
+		</div>
+		</div>
+
+
+		<section class="gallery py-5">
+			<div class="container py-md-4 mt-md-3">
+				<div class="wthree_head_section">
+					<h2 class="w3l_header" style="color:black" align="center"> Images </h2>
+				</div>
+
+				<div class="row agile_gallery_grids w3-agile demo mt-md-6 pt-5">
+					<div class="col-md-5 gal-sec">
+						<div class="gallery-grid1">
+							{% for x in imgdat %}
+							<a target='_blank'>
+								<img src='../static{{x.2}}' alt='Cinque Terre' class="img-responsive" width="170px"
+									height="170px">
+							</a>
+
+							{% endfor %}
+						</div>
+
+					</div>
+				</div>
+			</div>
+		</section>
+
+		<section class="gallery py-5">
+			<div class="container py-md-4 mt-md-3">
+				<div class="wthree_head_section">
+					<h2 class="w3l_header" style="color:black" align="center"> Videos </h2>
+				</div>
+
+				<div class="row agile_gallery_grids w3-agile demo mt-md-5 pt-4">
+					<div class="col-md-4 gal-sec">
+						<div class="gallery-grid1">
+							<div class='gal'>
+								{% for x in videodat %}
+								<a target='_blank' href='/viewvideolink?https://www.youtube.com/embed/id={{x.3}}'>
+									<video width="320" height="240" controls>
+										<source src="../static{{x.2}}" type="video/mp4">
+									</video>
+								</a>
+								<div class='desc'>{{x.3}}</div>
+							</div>
+							{% endfor %}
+						</div>
+
+					</div>
+				</div>
+
+			</div>
+		</section>
+		<h2 align="center" style="color:black">{% for d in data %}
+			<a href='/photographerartgallery/?reg_id={{d.0}}'>View Gallery</a>
+			{% endfor %}
+		</h2>
+
+	</form>
+	<script>
+
+		$("#district").change(function () {
+
+			var c = 0;
+			debugger;
+			var entity = new Array();
+			var cid = $("#district").val();
+
+			alert(cid);
+
+			//var data = JSON.stringify(entity);
+			var urls = '/placelist/?d_id=' + cid;
+			$.ajax({
+
+				url: urls,
+				/*data: data,
+				dataType: "JSON",
+				contentType: "Application/json",*/
+				/* success: function (data) {
+					 alert('success');
+	 
+				 },
+				 error: function (xhr, status, error) {
+					 debugger;
+				 }*/
+				success: function (data) {
+
+					$('select[name=place]').empty()
+					$.each(data, function (index, text) {
+						$('select[name=place]').append(
+							$('<option></option>').val(text).html(text)
+						);
+					});
+				}
+
+			})
+
+		})
+
+	</script>
+
+	{% endblock %}

@@ -1,0 +1,32 @@
+{%  extends 'registration_header_footer.html' %}
+{% block owner_home %}
+
+{% if msg %}
+<script>
+    alert("{{msg}}");
+</script>
+{% endif %}
+<html>
+    
+    <head><h2 align="center" style="color: brown;">  Association Registration</h2></head>
+    <body>
+    <form method="POST">
+     {% csrf_token %}
+        <table align="center" width="500" height="300">
+            <br>
+            <br>
+<tr><td> Name:</td><td><input type="text" name="name" required pattern="[A-Za-z\s]+" title="enter characters only"></td></tr>
+<tr><td> Address:</td><td><input type="text" name="addr" required></td></tr>
+<tr><td> Association Head:</td><td><input type="text" name="ah" required pattern="[A-Za-z\s]+" title="enter characters only"></td></tr>
+
+<tr><td> Email:</td><td><input type="text" name="email" required></td></tr>
+<tr><td> Phone Number:</td><td><input type="text" name="phno" required minlength="10" maxlength="10" pattern="[0-9]{10}" title="enter 10 digits only"></td></tr>
+<tr><td> Username:</td><td><input type="text" name="uname" required></td></tr>
+<tr><td> Password:</td><td><input type="Password" name="pass" required></td></tr>
+<tr><td><input type="submit" name="sub" value="Submit"></td></tr>
+</table>
+</form>
+<br>
+<br>
+{% endblock %}
+

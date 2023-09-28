@@ -1,0 +1,43 @@
+
+{%  extends 'customer_header.html' %}
+{% block viewphotographer %}
+<html>
+<style>
+.gal {
+  margin: 5px;
+  border: 1px solid #ccc;
+  float: left;
+  
+
+}
+
+.gal:hover {
+  border: 1px solid #777;
+}
+
+
+.gal img {
+  width:250px;
+  height: 200px;
+}
+
+
+.desc {
+  padding: 15px;
+  text-align: center;
+}
+</style>
+<h3 style="color:black" align="center">View Albums</h3>
+<div style="width: 100%;height: 850px">
+<div class='gal'>
+ {% for x in data1 %}
+ <a target='_blank' href='/viewvideolink?https://www.youtube.com/embed/id={{x.3}}'>
+    <img src='../{{x.2}}' alt='Cinque Terre'>
+  </a>
+  <div class='desc'>{{x.3}}</div>
+</div>
+
+        {% endfor %} 
+        
+        </html>
+        {% endblock %}

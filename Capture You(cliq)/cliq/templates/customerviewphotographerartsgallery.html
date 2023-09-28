@@ -1,0 +1,297 @@
+{% extends 'customer_header.html' %}
+{% block viewphotographer %}
+<html>
+
+<body>
+	<form method="POST">
+		{% csrf_token %}
+
+		<style>
+			fieldset,
+			label {
+				margin: 0;
+				padding: 0;
+			}
+
+			h1 {
+				font-size: 1.5em;
+				margin: 10px;
+			}
+
+			/****** Style Star Rating Widget *****/
+
+			.rating {
+				border: none;
+				float: left;
+			}
+
+			.rating>input {
+				display: none;
+			}
+
+			.rating>label:before {
+				margin: 5px;
+				font-size: 1.25em;
+				font-family: FontAwesome;
+				display: inline-block;
+				content: "\f005";
+			}
+
+			.rating>.half:before {
+				content: "\f089";
+				position: absolute;
+			}
+
+			.rating>label {
+				color: #ddd;
+				float: right;
+			}
+
+			/***** CSS Magic to Highlight Stars on Hover *****/
+
+			.rating>input:checked~label,
+			/* show gold star when clicked */
+			.rating:not(:checked)>label:hover,
+			/* hover current star */
+			.rating:not(:checked)>label:hover~label {
+				color: #FFD700;
+			}
+
+			/* hover previous stars in list */
+
+			.rating>input:checked+label:hover,
+			/* hover current star when changing rating */
+			.rating>input:checked~label:hover,
+			.rating>label:hover~input:checked~label,
+			/* lighten current selection */
+			.rating>input:checked~label:hover~label {
+				color: #FFED85;
+			}
+
+			table {
+				font-family: arial, sans-serif;
+				border-collapse: collapse;
+				width: 95%;
+				margin-left: 3%;
+				border: #000000;
+			}
+
+			td,
+			th {
+				border: 1px solid #dddddd;
+				text-align: left;
+				padding: 8px;
+			}
+
+			tr:nth-child(even) {
+				background-color: #dddddd;
+			}
+		</style>
+
+
+
+
+		<div id="class" class="">
+			<div class="content-wrap">
+				<div class="container">
+
+
+
+
+
+
+					<!--photographer image content-->
+
+
+
+
+					<!-- Item 2 -->
+					<!-- <div class="col-12 col-sm-6 col-md-4">
+						<div class="rs-team-1 mb-5">
+							<div class="media">
+								<a href="page-single-staff.html"><img src="images/vet06.jpg" alt="" class="img-fluid"></a>
+								<div class="sosmed-icon">
+									<a href="#"><i class="fa fa-facebook"></i></a>
+									<a href="#"><i class="fa fa-twitter"></i></a>
+									<a href="#"><i class="fa fa-google-plus"></i></a>
+								</div>
+							</div>
+							<div class="body">
+								<div class="title"><a href="page-single-staff.html">Dr. Mellisa Doel</a></div>
+								<div class="text-primary">Veterinary</div>
+							</div>
+						</div>
+					</div> -->
+
+					<!-- Item 3 -->
+					<!-- <div class="col-12 col-sm-6 col-md-4">
+						<div class="rs-team-1 mb-5">
+							<div class="media">
+								<a href="page-single-staff.html"><img src="images/vet07.jpg" alt="" class="img-fluid"></a>
+								<div class="sosmed-icon">
+									<a href="#"><i class="fa fa-facebook"></i></a>
+									<a href="#"><i class="fa fa-twitter"></i></a>
+									<a href="#"><i class="fa fa-google-plus"></i></a>
+								</div>
+							</div>
+							<div class="body">
+								<div class="title"><a href="page-single-staff.html">Dr. Aldizza Doel</a></div>
+								<div class="text-primary">Veterinary</div>
+							</div>
+						</div>
+					</div> -->
+
+					<!-- Item 4 -->
+					<!-- <div class="col-12 col-sm-6 col-md-4">
+						<div class="rs-team-1 mb-5">
+							<div class="media">
+								<a href="page-single-staff.html"><img src="images/vet08.jpg" alt="" class="img-fluid"></a>
+								<div class="sosmed-icon">
+									<a href="#"><i class="fa fa-facebook"></i></a>
+									<a href="#"><i class="fa fa-twitter"></i></a>
+									<a href="#"><i class="fa fa-google-plus"></i></a>
+								</div>
+							</div>
+							<div class="body">
+								<div class="title"><a href="page-single-staff.html">Dr. Ronald Doel</a></div>
+								<div class="text-primary">Veterinary</div>
+							</div>
+						</div>
+					</div> -->
+
+					<!-- Item 5 -->
+					<!-- <div class="col-12 col-sm-6 col-md-4">
+						<div class="rs-team-1 mb-5">
+							<div class="media">
+								<a href="page-single-staff.html"><img src="images/vet09.jpg" alt="" class="img-fluid"></a>
+								<div class="sosmed-icon">
+									<a href="#"><i class="fa fa-facebook"></i></a>
+									<a href="#"><i class="fa fa-twitter"></i></a>
+									<a href="#"><i class="fa fa-google-plus"></i></a>
+								</div>
+							</div>
+							<div class="body">
+								<div class="title"><a href="page-single-staff.html">Dr. James Doel</</a></div>
+								<div class="text-primary">Veterinary</div>
+							</div>
+						</div>
+					</div> -->
+
+					<!-- Item 6 -->
+					<!-- <div class="col-12 col-sm-6 col-md-4">
+						<div class="rs-team-1 mb-5">
+							<div class="media">
+								<a href="page-single-staff.html"><img src="images/vet10.jpg" alt="" class="img-fluid"></a>
+								<div class="sosmed-icon">
+									<a href="#"><i class="fa fa-facebook"></i></a>
+									<a href="#"><i class="fa fa-twitter"></i></a>
+									<a href="#"><i class="fa fa-google-plus"></i></a>
+								</div>
+							</div>
+							<div class="body">
+								<div class="title"><a href="page-single-staff.html">Dr. Thomas Doel</a></div>
+								<div class="text-primary">Veterinary</div>
+							</div>
+						</div>
+					</div> -->
+					<br>
+					<br>
+					<br>
+
+
+
+
+
+					<section class="gallery py-5">
+						<div class="container py-md-4 mt-md-3">
+							<div class="wthree_head_section">
+								<h2 class="w3l_header" style="color:black" align="center"> Arts Gallery </h2>
+							</div>
+
+							<div class="row agile_gallery_grids w3-agile demo mt-md-6 pt-5">
+								<div class="col-md-5 gal-sec">
+									<div class="gallery-grid1">
+										{% for x in imgdat %}
+										<a target='_blank' href='../static{{x.3}}'>
+											<img src='../static{{x.3}}' alt='Cinque Terre' class="img-responsive"
+												width="170px" height="170px">
+										</a>
+
+										{% endfor %}
+									</div>
+
+								</div>
+							</div>
+						</div>
+					</section>
+
+					<section class="gallery py-5">
+						<div class="container py-md-4 mt-md-3">
+							<div class="wthree_head_section">
+								<h2 class="w3l_header" style="color:black" align="center"> Sales Gallery </h2>
+							</div>
+
+							<div class="row agile_gallery_grids w3-agile demo mt-md-5 pt-4">
+								<div class="col-md-4 gal-sec">
+									<div class="gallery-grid1">
+										<div class='gal'>
+											{% for x in videodat %}
+											<a target='_blank' href='../{{x.3}}'>
+												<img src='../static{{x.3}}' alt='Cinque Terre' class="img-responsive"
+													width="170px" height="170px">
+											</a>
+											{% endfor %}
+										</div>
+
+									</div>
+								</div>
+							</div>
+					</section>
+				</div>
+
+	</form>
+	<script>
+
+		$("#district").change(function () {
+
+			var c = 0;
+			debugger;
+			var entity = new Array();
+			var cid = $("#district").val();
+
+			alert(cid);
+
+			//var data = JSON.stringify(entity);
+			var urls = '/placelist/?d_id=' + cid;
+			$.ajax({
+
+				url: urls,
+				/*data: data,
+				dataType: "JSON",
+				contentType: "Application/json",*/
+				/* success: function (data) {
+					 alert('success');
+	 
+				 },
+				 error: function (xhr, status, error) {
+					 debugger;
+				 }*/
+				success: function (data) {
+
+					$('select[name=place]').empty()
+					$.each(data, function (index, text) {
+						$('select[name=place]').append(
+							$('<option></option>').val(text).html(text)
+						);
+					});
+				}
+
+			})
+
+		})
+
+	</script>
+
+	{% endblock %}
+		
+</body>

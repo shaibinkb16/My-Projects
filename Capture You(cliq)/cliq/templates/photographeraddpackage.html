@@ -1,0 +1,27 @@
+{%  extends 'photographer_header.html' %}
+{% block owner_home %}
+
+{% if msg %}
+<script>
+    alert('{{msg}}');
+</script>
+{% endif %}
+<html>
+    
+    <head><h2 align="center" style="color: brown;">  Add Package</h2></head>
+    <body>
+    <form method="POST">
+     {% csrf_token %}
+        <table align="center" width="500" height="150">
+        <br>
+         <tr><td>Add Your Package:</td><td><input type="text" name="pack" placeholder="your package name" class="form-control"></td></tr>
+<tr><td> Amount:</td><td><input type="text" name="amt" placeholder="your amount" class="form-control"></td></tr>
+
+<tr><td><input type="submit" name="sub" value="Submit"></td></tr>
+</table>
+</form>
+<br>
+<br>
+{% endblock %}
+
+

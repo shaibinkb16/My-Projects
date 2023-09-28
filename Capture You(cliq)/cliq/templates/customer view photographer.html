@@ -1,0 +1,241 @@
+
+
+{%  extends 'customer_header.html' %}
+{% block viewphotographer %}
+<html>
+        {% comment %} <script src="../static/admin_js/vendor/js/jquery.min.js"></script> {% endcomment %}
+
+    <h4 align="center" style="color:brown">Choose Your Photographer</h4>
+    <body>
+		<script src="../static/js/jquery-2.1.4.min.js"></script>
+
+    <form method="POST">
+     {% csrf_token %}
+        <table align="center" width="400" height="100">
+            
+            <tr><td>District:</td><td><select name="district" class="form-control" id="district">
+                <option class="form-control" style="color:black"  >--select district--</option>
+                {% for d in data %}
+                <option value="{{d.1}}" style="color:black" class="form-control">{{d.1}}</option>
+                {% endfor %}
+                </select>  </td></tr>
+       <tr><td>Place</td><td><select class="form-control" placeholder="place" name="place" id="place" required="">
+					<option class="form-control" style="color:black"  >--select place--</option>
+                {% for d in data1 %}
+                <option value="{{d.0}}" style="color:black" class="form-control">{{d.1}}</option>
+                {% endfor %}
+                                                                                </select></td>
+           </tr>  
+<tr><td><input type="submit" name="searchsub" value="Search"></td></tr>
+</table>
+
+</form>
+<br>
+<br>
+{% comment %} <script src="../static/admin_js/vendor/js/jquery.min.js"></script> {% endcomment %}
+<div id="class" class="">
+		<div class="content-wrap">
+			<div class="container">
+			{% if msg %}
+					<script>
+					alert("{{msg}}")
+                    
+                    </script>
+                        {% endif %}
+					
+				<div class="row">
+					<div class="col-sm-12 col-md-12">
+						<h2 class="section-heading text-center text-primary no-after mb-5">
+							Photographers Details
+						</h2>
+						<p class="subheading text-center"></p>
+					</div>
+				</div>
+					
+				<div class="row mt-4">
+	
+                    
+                    
+                    {% if count %}
+					{% for d in data1 %}
+					<!-- Item 1 -->
+					<div class="col-12 col-sm-6 col-md-4">
+						<div class="rs-team-1 mb-5">
+							
+							<div class="media">
+								<!-- <a href="../owner_view_walkers?reg_id={{d.0}}"><img src="../../{{d.1}}" alt="{{d.1}}" class="img-fluid" width="200px" height="200px"></a> -->
+								<div class="sosmed-icon">
+									<a href="#"><i class="fa fa-facebook"></i></a>
+									<a href="#"><i class="fa fa-twitter"></i></a>
+									<a href="#"><i class="fa fa-google-plus"></i></a>
+								</div>
+							</div>
+							<div class="body">
+                               <a href="../photographerprofile?reg_id={{d.0}}"> <h2 style="color: black;"><b>{{d.1}}</b></h2></a>
+
+								<div class="title"><a href="../view_pet_centre_profile?reg_id={{d.0}}">Address:{{d.2}}</a></div><br>
+								<div class="text-primary">Contact Number  : <b >{{d.8}} </b></div><br>
+								<div class="text-primary">Email  : <b>{{d.7}} </b></div><br>
+								<div class="text-primary">Specialization  : <b>{{d.6}} </b></div><br>
+								<div class="text-primary"><b>{{d.5}} </b></div><br>
+                                <div class="text-primary">Timing : <b style="color: black;">From 9 am-10 pm</b></div><br>
+                                <br>
+
+                         
+
+
+      {% if data.0.7 == 'accepted' %}
+
+      <a href="../send_lookafter_request?reg_id={{d.0}}"  class="btn btn-secondary" value="Agreed to look after pets">Send Request to look after pets</a>
+      {% endif %}
+							</div>
+						</div>
+                    </div>
+                    {% endfor %}
+                     {% endif %}
+
+					<!-- Item 2 -->
+					<!-- <div class="col-12 col-sm-6 col-md-4">
+						<div class="rs-team-1 mb-5">
+							<div class="media">
+								<a href="page-single-staff.html"><img src="images/vet06.jpg" alt="" class="img-fluid"></a>
+								<div class="sosmed-icon">
+									<a href="#"><i class="fa fa-facebook"></i></a>
+									<a href="#"><i class="fa fa-twitter"></i></a>
+									<a href="#"><i class="fa fa-google-plus"></i></a>
+								</div>
+							</div>
+							<div class="body">
+								<div class="title"><a href="page-single-staff.html">Dr. Mellisa Doel</a></div>
+								<div class="text-primary">Veterinary</div>
+							</div>
+						</div>
+					</div> -->
+
+					<!-- Item 3 -->
+					<!-- <div class="col-12 col-sm-6 col-md-4">
+						<div class="rs-team-1 mb-5">
+							<div class="media">
+								<a href="page-single-staff.html"><img src="images/vet07.jpg" alt="" class="img-fluid"></a>
+								<div class="sosmed-icon">
+									<a href="#"><i class="fa fa-facebook"></i></a>
+									<a href="#"><i class="fa fa-twitter"></i></a>
+									<a href="#"><i class="fa fa-google-plus"></i></a>
+								</div>
+							</div>
+							<div class="body">
+								<div class="title"><a href="page-single-staff.html">Dr. Aldizza Doel</a></div>
+								<div class="text-primary">Veterinary</div>
+							</div>
+						</div>
+					</div> -->
+
+					<!-- Item 4 -->
+					<!-- <div class="col-12 col-sm-6 col-md-4">
+						<div class="rs-team-1 mb-5">
+							<div class="media">
+								<a href="page-single-staff.html"><img src="images/vet08.jpg" alt="" class="img-fluid"></a>
+								<div class="sosmed-icon">
+									<a href="#"><i class="fa fa-facebook"></i></a>
+									<a href="#"><i class="fa fa-twitter"></i></a>
+									<a href="#"><i class="fa fa-google-plus"></i></a>
+								</div>
+							</div>
+							<div class="body">
+								<div class="title"><a href="page-single-staff.html">Dr. Ronald Doel</a></div>
+								<div class="text-primary">Veterinary</div>
+							</div>
+						</div>
+					</div> -->
+
+					<!-- Item 5 -->
+					<!-- <div class="col-12 col-sm-6 col-md-4">
+						<div class="rs-team-1 mb-5">
+							<div class="media">
+								<a href="page-single-staff.html"><img src="images/vet09.jpg" alt="" class="img-fluid"></a>
+								<div class="sosmed-icon">
+									<a href="#"><i class="fa fa-facebook"></i></a>
+									<a href="#"><i class="fa fa-twitter"></i></a>
+									<a href="#"><i class="fa fa-google-plus"></i></a>
+								</div>
+							</div>
+							<div class="body">
+								<div class="title"><a href="page-single-staff.html">Dr. James Doel</</a></div>
+								<div class="text-primary">Veterinary</div>
+							</div>
+						</div>
+					</div> -->
+
+					<!-- Item 6 -->
+					<!-- <div class="col-12 col-sm-6 col-md-4">
+						<div class="rs-team-1 mb-5">
+							<div class="media">
+								<a href="page-single-staff.html"><img src="images/vet10.jpg" alt="" class="img-fluid"></a>
+								<div class="sosmed-icon">
+									<a href="#"><i class="fa fa-facebook"></i></a>
+									<a href="#"><i class="fa fa-twitter"></i></a>
+									<a href="#"><i class="fa fa-google-plus"></i></a>
+								</div>
+							</div>
+							<div class="body">
+								<div class="title"><a href="page-single-staff.html">Dr. Thomas Doel</a></div>
+								<div class="text-primary">Veterinary</div>
+							</div>
+						</div>
+					</div> -->
+
+				</div>
+
+			</div>
+		</div>
+	</div>
+    <script type="text/javascript" src="../static/js/jquery-2.1.4.min.js"></script>
+	<script type="text/javascript" src="../static/js/bootstrap.js"></script> <!-- Necessary-JavaScript-File-For-Bootstrap --> 
+	<!-- //js -->
+	
+	<!-- carousel -->
+	<script src="../static/js/owl.carousel.js"></script>
+<script>
+
+
+        $("#district").change(function (){
+            
+            var c=0;
+            debugger;
+            var entity=new Array();
+            var cid = $("#district").val();
+           
+            //alert(cid);
+    
+           //var data = JSON.stringify(entity);
+                         var urls='/placelist1/?d_id=' + cid ;
+            $.ajax({
+               
+                url: urls,
+                /*data: data,
+                dataType: "JSON",
+                contentType: "Application/json",*/
+               /* success: function (data) {
+                    alert('success');
+    
+                },
+                error: function (xhr, status, error) {
+                    debugger;
+                }*/
+                success: function(data){
+                    
+                    $('select[name=place]').empty()
+                   $.each(data, function(index, text){                            
+                       $('select[name=place]').append(
+                        $('<option></option>').val(text).html(text)
+                       );                       
+                       });                        
+                     }                       
+    
+               })
+              
+            })
+    
+</script>
+
+{% endblock %}

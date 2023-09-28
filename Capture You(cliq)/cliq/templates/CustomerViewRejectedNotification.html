@@ -1,0 +1,157 @@
+
+
+{%  extends 'customer_header.html' %}
+{% block owner_home %}
+<html>
+        <script src="../static/js/jquery.js"></script>
+    <h2 align="center" style="color:brown">Your Bookings</h2>
+    <body>
+    <form method="POST">
+     {% csrf_token %}
+    <style>
+            table {
+              font-family: arial, sans-serif;
+              border-collapse: collapse;
+              width: 95%;
+              margin-left: 3%;
+              border: #000000;
+            }
+           
+            td, th {
+              border: 1px solid #dddddd;
+              text-align: left;
+              padding: 8px;
+            }
+           
+            tr:nth-child(even) {
+              background-color: #dddddd;
+            }
+            </style>
+
+<table align="center" width="900" height="100">
+<tr style="background:#ff3c41">
+    <tr>
+            <th>Photographer</th>
+            <th>Phone</th>
+            <th>Email</th>
+            <th>From Date</th>                  
+            <th>To Date</th>                  
+            <th>Amount</th>   
+            <th>Status</th>                 
+          
+        </tr>
+        {% for x in data %}
+        <tr>
+            
+            <td>
+                {{x.3}}
+            </td>
+            <td>
+                {{x.4}}
+            </td>
+            <td>
+                {{x.5}}
+            </td>
+            <td>
+                {{x.0}}
+            </td><td>
+                {{x.1}}
+            </td>
+           <td>
+                {{x.2}}
+            </td>
+            <td>
+                {{x.7}}
+            </td>
+           
+           {% endfor %} 
+             
+              </tr> 
+        
+        </table>
+</form>
+<br>
+<br>
+<script>
+
+        $("#district").change(function (){
+            
+            var c=0;
+            debugger;
+            var entity=new Array();
+            var cid = $("#district").val();
+           
+            //alert(cid);
+    
+           //var data = JSON.stringify(entity);
+                         var urls='/placelist/?d_id=' + cid ;
+            $.ajax({
+               
+                url: urls,
+                /*data: data,
+                dataType: "JSON",
+                contentType: "Application/json",*/
+               /* success: function (data) {
+                    alert('success');
+    
+                },
+                error: function (xhr, status, error) {
+                    debugger;
+                }*/
+                success: function(data){
+                    
+                    $('select[name=place]').empty()
+                   $.each(data, function(index, text){                            
+                       $('select[name=place]').append(
+                        $('<option></option>').val(text).html(text)
+                       );                       
+                       });                        
+                     }                       
+    
+               })
+              
+            })
+    
+</script>
+<script>
+$("#place").change(function (){
+            
+            var c=0;
+            debugger;
+            var entity=new Array();
+            var cid = $("#place").val();
+            
+            //alert(cid);
+    
+           //var data = JSON.stringify(entity);
+                         var urls='/photographerlist/?d_id=' + cid ;
+            $.ajax({
+               
+                url: urls,
+                /*data: data,
+                dataType: "JSON",
+                contentType: "Application/json",*/
+               /* success: function (data) {
+                    alert('success');
+    
+                },
+                error: function (xhr, status, error) {
+                    debugger;
+                }*/
+                success: function(data){
+                   
+                     $('select[name=pg]').empty()
+                    $.each(data, function(index, text){                            
+                        $('select[name=pg]').append(
+                         $('<option></option>').val(text).html(text)
+                        );                       
+                        });                        
+                     }                       
+    
+               })
+              
+            })
+        
+    
+    </script>
+{% endblock %}

@@ -1,0 +1,82 @@
+{% extends 'admin_header.html' %}
+{% block approvepg %}
+<form method="POST">
+{% csrf_token%}
+
+<h2 align="center" style="color:brown"> Customer Details</h2>
+<br>
+<style>
+    table {
+      font-family: arial, sans-serif;
+      border-collapse: collapse;
+      width: 95%;
+      margin-left: 2%;
+      border: #000000;
+      
+    }
+    
+    td, th {
+      border: 1px solid #dddddd;
+      text-align: left;
+      padding: 8px;
+    }
+    th{
+        background-color: #3C2800;
+        color: white;
+    }
+    td{
+        color: black;
+    }
+    tr:nth-child(even) {
+      background-color: #dddddd;
+    }
+    </style>
+<table class="customers">
+    <th>Name</th>
+    <th>Address</th>
+    <th>Gender</th>
+    <th>District</th>
+    <th>Email</th>
+    <th>Phone Number</th>
+   
+     
+  
+    
+    
+    {% for x in data %}
+    <tr>
+        
+        
+        <td>
+            {{x.1}}
+        </td>
+        <td>
+            {{x.2}}
+        </td>
+        <td>
+            {{x.3}}
+        </td>
+        <td>
+            {{x.4}}
+        </td>
+        
+        <td>
+            {{x.5}}
+        </td>
+        <td>
+            {{x.6}}
+        </td>
+       
+          </tr> 
+    {% endfor %} 
+</table>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+</form>
+{% endblock %}

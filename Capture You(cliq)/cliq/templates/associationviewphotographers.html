@@ -1,0 +1,106 @@
+{% extends 'association_header.html' %}
+{% block approvepg %}
+<form method="POST">
+{% csrf_token%}
+
+<h2 align="center" style="color:brown"> Photographers Details</h2>
+<br>
+<style>
+    table {
+      font-family: arial, sans-serif;
+      border-collapse: collapse;
+      width: 95%;
+      margin-left: 2%;
+      border: #000000;
+      
+    }
+    
+    td, th {
+      border: 1px solid #dddddd;
+      text-align: left;
+      padding: 8px;
+    }
+    th{
+        background-color: #3C2800;
+        color: white;
+    }
+    td{
+        color: black;
+    }
+    tr:nth-child(even) {
+      background-color: #dddddd;
+    }
+    </style>
+    {% if msg %}
+    <script>
+    alert("{{msg}}");
+    window.location.href="../addassoc/"
+    </script>
+    {% endif %}
+    
+<table class="customers">
+    <th>Name</th>
+    <th>Address</th>
+    <th>Gender</th>
+    <th>District</th>
+	 
+    <th>Email</th>
+    <th>Phone Number</th>
+    <th>Username</th>
+     
+    <th>Association1</th>
+	<th>Association2</th>
+
+    <th></th>
+    
+    {% for x in data %}
+    <tr>
+        
+        
+        <td>
+            {{x.1}}
+        </td>
+        <td>
+            {{x.2}}
+        </td>
+        <td>
+            {{x.3}}
+        </td>
+        <td>
+            {{x.4}}
+        </td>
+        
+        
+        <td>
+            {{x.7}}
+        </td>
+        <td>
+            {{x.8}}
+        </td>
+		<td>
+            {{x.10}}
+        </td><td>
+            {{x.13}}
+        </td>
+		<td>
+            {{x.14}}
+        </td>
+        
+        
+        <td>
+            <a href='/photographeraddtoassoc/?id={{x.0}}'>Add</a>
+        </td>
+        
+          </tr> 
+    {% endfor %} 
+</table>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+</form>
+{% endblock %}

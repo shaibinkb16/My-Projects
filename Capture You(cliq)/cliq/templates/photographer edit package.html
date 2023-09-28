@@ -1,0 +1,23 @@
+{%  extends 'photographer_header.html' %}
+{% block owner_home %}
+<html>
+    
+    <head><h2 align="center" style="color: brown;">  Add Package</h2></head>
+    <body>
+    <form method="POST">
+     {% csrf_token %}
+        <table align="center" width="500" height="150">
+        <br>
+        {% for d in data %}
+                 <tr><td>Your PackageID:</td><td><input type="label" name="packid" value="{{d.0}}" class="form-control"></td></tr>
+
+         <tr><td>Your Package:</td><td><input type="text" name="pack" value="{{d.2}}" class="form-control"></td></tr>
+<tr><td> Amount:</td><td><input type="text" name="amt" value="{{d.3}}" class="form-control"></td></tr>
+
+<tr><td><input type="submit" name="sub" value="Submit"></td></tr>
+{% endfor %}
+</table>
+</form>
+<br>
+<br>
+{% endblock %}

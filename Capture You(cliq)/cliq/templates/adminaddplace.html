@@ -1,0 +1,25 @@
+{%  extends 'admin_header.html' %}
+{% block approvepg %}
+<html>
+    
+    <head><h2 align="center" style="color: brown;">  Add Your Place</h2></head>
+    <body>
+    <form method="POST">
+     {% csrf_token %}
+        <table align="center" width="500" height="150" >
+         <tr><td>District:</td><td><select name="district" class="form-control">
+         <option class="form-control">--select district</option>
+         {% for d in data %}
+         <option class="form-control">{{d.1}}</option>
+         {% endfor %}
+         </select>  
+<tr><td> Place:</td><td><input type="text" name="name" class="form-control"></td></tr>
+
+<tr><td><input type="submit" name="sub" value="Submit"></td></tr>
+</table>
+</form>
+<br>
+<br>
+<br>
+<br>
+{% endblock %}

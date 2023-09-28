@@ -1,0 +1,25 @@
+{%  extends 'association_header.html' %}
+{% block owner_home %}
+<html>
+    
+    <head><h2 align="center" style="color: brown;">  Award Details</h2></head>
+    <body>
+    <form method="POST">
+     {% csrf_token %}
+        <table align="center" width="500" height="150">
+            <br>
+            
+<tr><td> Award:</td><td><input type="text" name="name"class="form-control"></td></tr>
+<tr><td> Photogapher Name:</td><td><input type="text" name="pname"class="form-control"></td></tr>
+
+<tr><td> Description:</td><td><input type="text" name="des"class="form-control"></td></tr>
+
+<tr><td><input type="submit" name="sub" value="Submit"></td></tr>
+</table>
+</form>
+<br>
+<br>
+<br>
+<br>
+<br>
+{% endblock %}

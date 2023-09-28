@@ -1,0 +1,203 @@
+
+
+{%  extends 'customer_header.html' %}
+{% block viewphotographer %}
+<html>
+        
+    
+    <body>
+    <form method="POST">
+     {% csrf_token %}
+        
+
+</form>
+<br>
+<br>
+<div id="class" class="">
+		<div class="content-wrap">
+			<div class="container">
+
+				<div class="row">
+					<div class="col-sm-12 col-md-12">
+						<h2 class="section-heading text-center text-primary no-after mb-5">
+							Our Packages Are
+						</h2>
+						<p class="subheading text-center"></p>
+					</div>
+				</div>
+
+				<div class="row mt-4">
+                
+                   
+                    
+                    
+					{% for d in data %}
+					<!-- Item 1 -->
+					<div class="col-12 col-sm-6 col-md-4">
+						<div class="rs-team-1 mb-5">
+							
+							<div class="media">
+								<!-- <a href="../owner_view_walkers?reg_id={{d.0}}"><img src="../../{{d.1}}" alt="{{d.1}}" class="img-fluid" width="200px" height="200px"></a> -->
+								<div class="sosmed-icon">
+									<a href="#"><i class="fa fa-facebook"></i></a>
+									<a href="#"><i class="fa fa-twitter"></i></a>
+									<a href="#"><i class="fa fa-google-plus"></i></a>
+								</div>
+							</div>
+							<div class="body">
+                               <h3 style="color: black;"><b>{{d.2}}</b></h3></a>
+
+								<div class="text-primary">Amount : <b >{{d.3}} </b></div><br>
+							<a href="../morebooking?reg_id={{d.0}}"  class="btn btn-primary" value="Book Now">Book Now</a><br><br>
+								
+                                <br>
+
+                         
+
+
+      
+							</div>
+						</div>
+                    </div>
+                    {% endfor %}
+                    
+
+					<!-- Item 2 -->
+					<!-- <div class="col-12 col-sm-6 col-md-4">
+						<div class="rs-team-1 mb-5">
+							<div class="media">
+								<a href="page-single-staff.html"><img src="images/vet06.jpg" alt="" class="img-fluid"></a>
+								<div class="sosmed-icon">
+									<a href="#"><i class="fa fa-facebook"></i></a>
+									<a href="#"><i class="fa fa-twitter"></i></a>
+									<a href="#"><i class="fa fa-google-plus"></i></a>
+								</div>
+							</div>
+							<div class="body">
+								<div class="title"><a href="page-single-staff.html">Dr. Mellisa Doel</a></div>
+								<div class="text-primary">Veterinary</div>
+							</div>
+						</div>
+					</div> -->
+
+					<!-- Item 3 -->
+					<!-- <div class="col-12 col-sm-6 col-md-4">
+						<div class="rs-team-1 mb-5">
+							<div class="media">
+								<a href="page-single-staff.html"><img src="images/vet07.jpg" alt="" class="img-fluid"></a>
+								<div class="sosmed-icon">
+									<a href="#"><i class="fa fa-facebook"></i></a>
+									<a href="#"><i class="fa fa-twitter"></i></a>
+									<a href="#"><i class="fa fa-google-plus"></i></a>
+								</div>
+							</div>
+							<div class="body">
+								<div class="title"><a href="page-single-staff.html">Dr. Aldizza Doel</a></div>
+								<div class="text-primary">Veterinary</div>
+							</div>
+						</div>
+					</div> -->
+
+					<!-- Item 4 -->
+					<!-- <div class="col-12 col-sm-6 col-md-4">
+						<div class="rs-team-1 mb-5">
+							<div class="media">
+								<a href="page-single-staff.html"><img src="images/vet08.jpg" alt="" class="img-fluid"></a>
+								<div class="sosmed-icon">
+									<a href="#"><i class="fa fa-facebook"></i></a>
+									<a href="#"><i class="fa fa-twitter"></i></a>
+									<a href="#"><i class="fa fa-google-plus"></i></a>
+								</div>
+							</div>
+							<div class="body">
+								<div class="title"><a href="page-single-staff.html">Dr. Ronald Doel</a></div>
+								<div class="text-primary">Veterinary</div>
+							</div>
+						</div>
+					</div> -->
+
+					<!-- Item 5 -->
+					<!-- <div class="col-12 col-sm-6 col-md-4">
+						<div class="rs-team-1 mb-5">
+							<div class="media">
+								<a href="page-single-staff.html"><img src="images/vet09.jpg" alt="" class="img-fluid"></a>
+								<div class="sosmed-icon">
+									<a href="#"><i class="fa fa-facebook"></i></a>
+									<a href="#"><i class="fa fa-twitter"></i></a>
+									<a href="#"><i class="fa fa-google-plus"></i></a>
+								</div>
+							</div>
+							<div class="body">
+								<div class="title"><a href="page-single-staff.html">Dr. James Doel</</a></div>
+								<div class="text-primary">Veterinary</div>
+							</div>
+						</div>
+					</div> -->
+
+					<!-- Item 6 -->
+					<!-- <div class="col-12 col-sm-6 col-md-4">
+						<div class="rs-team-1 mb-5">
+							<div class="media">
+								<a href="page-single-staff.html"><img src="images/vet10.jpg" alt="" class="img-fluid"></a>
+								<div class="sosmed-icon">
+									<a href="#"><i class="fa fa-facebook"></i></a>
+									<a href="#"><i class="fa fa-twitter"></i></a>
+									<a href="#"><i class="fa fa-google-plus"></i></a>
+								</div>
+							</div>
+							<div class="body">
+								<div class="title"><a href="page-single-staff.html">Dr. Thomas Doel</a></div>
+								<div class="text-primary">Veterinary</div>
+							</div>
+						</div>
+					</div> -->
+
+				</div>
+
+			</div>
+		</div>
+	</div>
+    
+<script>
+
+        $("#district").change(function (){
+            
+            var c=0;
+            debugger;
+            var entity=new Array();
+            var cid = $("#district").val();
+           
+            alert(cid);
+    
+           //var data = JSON.stringify(entity);
+                         var urls='/placelist/?d_id=' + cid ;
+            $.ajax({
+               
+                url: urls,
+                /*data: data,
+                dataType: "JSON",
+                contentType: "Application/json",*/
+               /* success: function (data) {
+                    alert('success');
+    
+                },
+                error: function (xhr, status, error) {
+                    debugger;
+                }*/
+                success: function(data){
+                    
+                    $('select[name=place]').empty()
+                   $.each(data, function(index, text){                            
+                       $('select[name=place]').append(
+                        $('<option></option>').val(text).html(text)
+                       );                       
+                       });                        
+                     }                       
+    
+               })
+              
+            })
+    
+</script>
+
+{% endblock %}

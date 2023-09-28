@@ -1,0 +1,179 @@
+
+
+{%  extends 'photographer_header.html' %}
+{% block owner_home %}
+<html>
+    <h2 align="center" style="color:brown">Bookings</h2>
+    <body>
+    <form method="POST">
+     {% csrf_token %}
+    <style>
+    table {
+      font-family: arial, sans-serif;
+      border-collapse: collapse;
+      width: 95%;
+      margin-left: 2%;
+      border: #000000;
+      
+    }
+    
+    td, th {
+      border: 1px solid #dddddd;
+      text-align: left;
+      padding: 8px;
+    }
+    th{
+        background-color: #3C2800;
+        color: white;
+    }
+    td{
+        color: black;
+    }
+    tr:nth-child(even) {
+      background-color: #dddddd;
+    }
+    </style>    
+<table class="customers">
+    <tr>
+            <th>Customer Name</th>
+            <th>Phone Number</th>
+            <th>Booking Date</th>
+            <th>From Date</th>
+            <th>To Date</th>
+            <th>Location</th>
+            <th>Description</th>
+            <th>Amount</th>
+            <th></th>                  
+           
+        </tr>
+        {% for x in data %}
+        <tr>
+            
+            <td>
+                {{x.0}}
+            </td>
+            <td>
+                {{x.1}}
+            </td>
+            <td>
+                {{x.5}}
+            </td>
+             <td>
+                {{x.6}}
+            </td>
+             <td>
+                {{x.7}}
+            </td>
+            <td>
+                {{x.9}}
+            </td>
+            
+             <td>
+                {{x.10}}
+            </td>
+            <td>
+                {{x.12}}
+            </td>
+            
+            <td>
+                <a href='/approvebooking/?id={{x.2}}'>Approve</a>
+            </td>
+            <td>
+                <a href='/rejectbooking/?id={{x.2}}'>Reject</a>
+            </td>
+             
+              </tr> 
+        {% endfor %} 
+        </table>
+</form>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<script>
+
+        $("#district").change(function (){
+            
+            var c=0;
+            debugger;
+            var entity=new Array();
+            var cid = $("#district").val();
+           
+            //alert(cid);
+    
+           //var data = JSON.stringify(entity);
+                         var urls='/placelist/?d_id=' + cid ;
+            $.ajax({
+               
+                url: urls,
+                /*data: data,
+                dataType: "JSON",
+                contentType: "Application/json",*/
+               /* success: function (data) {
+                    alert('success');
+    
+                },
+                error: function (xhr, status, error) {
+                    debugger;
+                }*/
+                success: function(data){
+                    
+                    $('select[name=place]').empty()
+                   $.each(data, function(index, text){                            
+                       $('select[name=place]').append(
+                        $('<option></option>').val(text).html(text)
+                       );                       
+                       });                        
+                     }                       
+    
+               })
+              
+            })
+    
+</script>
+<script>
+$("#place").change(function (){
+            
+            var c=0;
+            debugger;
+            var entity=new Array();
+            var cid = $("#place").val();
+            
+            //alert(cid);
+    
+           //var data = JSON.stringify(entity);
+                         var urls='/photographerlist/?d_id=' + cid ;
+            $.ajax({
+               
+                url: urls,
+                /*data: data,
+                dataType: "JSON",
+                contentType: "Application/json",*/
+               /* success: function (data) {
+                    alert('success');
+    
+                },
+                error: function (xhr, status, error) {
+                    debugger;
+                }*/
+                success: function(data){
+                   
+                     $('select[name=pg]').empty()
+                    $.each(data, function(index, text){                            
+                        $('select[name=pg]').append(
+                         $('<option></option>').val(text).html(text)
+                        );                       
+                        });                        
+                     }                       
+    
+               })
+              
+            })
+        
+    
+    </script>
+{% endblock %}
